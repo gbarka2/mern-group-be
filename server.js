@@ -6,15 +6,19 @@ const corsOptions = require('./configs/cors.js')
 const express = require('express')
 const app = express()
 const morgan = require('morgan')
-const tunrRouter = require('./controllers/tunr')
+
 
 NODE_ENV === 'production' ? app.use(cors(corsOptions)) : app.use(cors())
 app.use(express.json())
 app.use(morgan('tiny'))
 
-app.get('/', (req, res) => {
-  res.json({hello: 'Hello World!'})
-})
+// app.get('/', (req, res) => {
+//   res.json({hello: 'Hello World!'})
+// })
+
+const tunrRouter = require('./controllers/tunr')
+app.use('/songs/',tunrRouter)
+
 
 // app.use('/tunr', tunrRouter)
 app.listen(PORT, () => {
