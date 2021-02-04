@@ -9,3 +9,5 @@ const songSchema = new Schema (
 )
 
 const Song = model("song", songSchema)
+
+module.exports = Song
